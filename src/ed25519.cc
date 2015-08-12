@@ -74,7 +74,7 @@ NAN_METHOD(Sign) {
 	Handle<Object> message = args[0]->ToObject();
 	const unsigned char* messageData = (unsigned char*)Buffer::Data(message);
 	size_t messageLen = Buffer::Length(message);
-	unsigned long long sigLen = 64 + messageLen;
+	uint64_t sigLen = 64 + messageLen;
 	unsigned char signatureMessageData[sigLen];
 	crypto_sign(signatureMessageData, &sigLen, messageData, messageLen, privateKey);
 
